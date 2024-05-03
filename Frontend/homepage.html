@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malicious URL Detection</title>
-    <link rel="stylesheet" href="homepagestyles.css">
+    <link rel="stylesheet" type="text/css" href="homepagestyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -28,8 +28,8 @@
         <section id="searchSection" class="highlighted">
             <div class="inputcontainer">
                 <h1>Enter the suspicious URL to check if it's malicious or safe</h1>
-                <form>
-                  <input type="text" name="" placeholder="Scan a URL">
+                <form id="urlForm" onsubmit="submitForm(event)">
+                  <input type="text" id = "url" name="url" placeholder="Scan a URL">
                   <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
               </div>
@@ -48,9 +48,8 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="homepagescript.js"></script>
+    
 </body>
 </html>
-
-
-

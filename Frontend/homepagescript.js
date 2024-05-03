@@ -1,14 +1,24 @@
-
-
 document.getElementById('urlForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-    
-    var urlInput = document.getElementById('urlInput').value;
-    var resultContainer = document.getElementById('resultContainer');
-    
-    // Placeholder code for displaying result
-    var resultMessage = document.createElement('p');
-    resultMessage.textContent = 'Detection result for ' + urlInput + ': Malicious';
-    resultContainer.innerHTML = ''; // Clear previous results
-    resultContainer.appendChild(resultMessage);
+    event.preventDefault(); // Prevent form submission
+
+    // Get the URL from the input field
+    var url = document.getElementById('url').value;
+
+    // Send a POST request to the Flask server
+    fetch('/predict', {  // Changed endpoint to /predict
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url: url })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response from the server
+        alert(data.result); // Display result from Flask server
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
+

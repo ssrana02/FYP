@@ -39,8 +39,6 @@ y_pred = isolation_forest.predict(X_test)
 print("Number of anomalies detected:", len(y_pred[y_pred == -1]))
 
 
-
-
 # Function to preprocess and extract features from a URL
 def extract_features(url):
     domain_length = len(re.findall('/.', url))
@@ -54,14 +52,14 @@ def extract_features(url):
     return [domain_length, subdomains, has_ip, path_length, path_depth, special_chars_count]
 
 # URL to test
-new_url = "https://certificate.doenets.lk/"
+new_url = "https://l.wl.co/l?u_%E2%84%8D%F0%9D%94%BC"
 
 # Extract features from the new URL
 new_url_features = extract_features(new_url)
 
 # Transform features into the same format as the training data
 new_url_features_array = np.array(new_url_features).reshape(1, -1)
-#new commnet
+
 # Predict anomaly
 is_anomaly = isolation_forest.predict(new_url_features_array)
 
